@@ -1,7 +1,15 @@
 const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
 
 const server = express();
 
-//server.use(express.json());
+server.use(helmet());
+server.use(express.json());
+server.use(cors());
 
-module.exports.server;
+server.get('/', (req, res) => {
+    res.send("server is live");
+  });
+
+module.exports = server;
