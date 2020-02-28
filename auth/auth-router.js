@@ -48,4 +48,6 @@ router.post('/register', (req, res) => {
     const token = jwt.sign(payload, secrets.jwtSecret, options);
 
     return token;
-}
+};
+
+module.exports = router;
