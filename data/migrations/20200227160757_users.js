@@ -1,6 +1,6 @@
 
-exports.up = function (knex, Promise) {
-  return Promise.all([knex.schema.createTable('users', tbl => {
+exports.up = async function (knex, Promise) {
+  return await knex.schema.createTable('users', tbl => {
     tbl.increments();
     tbl.string('email').unique();
     tbl.string('username', 128).notNullable().unique();
@@ -21,7 +21,7 @@ exports.up = function (knex, Promise) {
       tbl.string("name", 255)
       tbl.integer("article_id").unsigned().references("id").inTable("articles").onUpdate("CASCADE")
     })
-  ])};
+  };
 
 exports.down = function (knex, Promise) {
   return knex.schema
